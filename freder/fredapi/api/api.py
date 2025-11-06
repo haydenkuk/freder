@@ -20,13 +20,10 @@ from ..params import (
 from typing import (
   Dict, Any
 )
-from icecream import ic
-
-
-ic.configureOutput(includeContext=True)
 
 
 DOTENV = load_dotenv(find_dotenv())
+
 
 def apicall(
   endpoint: str,

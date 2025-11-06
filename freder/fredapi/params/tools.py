@@ -19,7 +19,8 @@ def set_apikey(val: str):
 
 
 def show_apikey():
-  print(vars.APIKEY)
+  print(f'Current api key: {vars.APIKEY}')
+
 
 def typecheck(
   parameter: Any,

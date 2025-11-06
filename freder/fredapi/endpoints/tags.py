@@ -5,7 +5,7 @@ from typing import (
   List,
   Tuple,
 )
-from ..base import Fred
+from ..api import apicall
 from ..params import (
   RealtimeEnd,
   RealtimeStart,
@@ -80,7 +80,7 @@ def get_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='tags',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -161,7 +161,7 @@ def get_related_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='related_tags',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -225,7 +225,7 @@ def get_tags_series(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='tags/series',
     params={
       'tag_names': TagNames(tag_names),

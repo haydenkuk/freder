@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-from ..base import Fred
+from ..api import apicall
 from ..params import (
   RealtimeEnd,
   RealtimeStart,
@@ -47,7 +47,7 @@ def get_sources(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='sources',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -78,7 +78,7 @@ def get_source(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='source',
     params={
       'source_id': SourceId(source_id),
@@ -127,7 +127,7 @@ def get_source_releases(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='source/releases',
     params={
       'source_id': SourceId(source_id),

@@ -1,7 +1,7 @@
 import datetime as dt
 from dateutil.relativedelta import relativedelta
 
-from .exceptions import (
+from .exception import (
   InvalidAggregationMethod,
   InvalidApikeyFormat,
   InvalidFrequency,
@@ -78,17 +78,16 @@ class Apikey(FredParameter):
     self,
     api_key: str,
   ) -> None:
-
-    super().__init__(
-      alias='api_key',
-      parameter=api_key,
-      types=(str,))
-
     if not api_key.isalnum():
       raise InvalidApikeyFormat()
     
     if len(api_key) != 32:
       raise InvalidApikeyFormat()
+
+    super().__init__(
+      alias='api_key',
+      parameter=api_key,
+      types=(str,))
 
 
 class FileType(FredParameter):
@@ -164,7 +163,7 @@ class RealtimeEnd(FredParameter):
   """
   realtime_end
 
-  The start of the real-time period. For more information,\
+  The start of the real-time period. For more information,
     see https://fred.stlouisfed.org/docs/api/fred/realtime_period.html
 
       YYYY-MM-DD formatted string, optional, default: today's date

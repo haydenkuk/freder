@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "freder"
-version = "0.0.1"
+version = "0.0.2"
 authors = [{ name = "Yunjong Guk", email = "haydenkuk@gmail.com" }]
 maintainers = [{ name = "Yunjong Guk", email = "haydenkuk@gmail.com" }]
 readme = { file = "README.md", content-type = "text/markdown" }
@@ -38,9 +38,9 @@ requires-python = ">=3.9"
 dynamic = ["description"]
 
 [project.urls]
-Source = "https://github.com/haydenkuk/fred"
-Issues = "https://github.com/haydenkuk/fred/issues"
-Documentation = "https://github.com/haydenkuk/fred/blob/main/README.md"
+Source = "https://github.com/haydenkuk/freder"
+Issues = "https://github.com/haydenkuk/freder/issues"
+Documentation = "https://github.com/haydenkuk/freder/blob/main/README.md"
 
 [project.license]
 file = "LICENSE.txt"

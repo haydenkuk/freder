@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-from .exceptions import (
+from .exception import (
   ParameterTypeError,
 )
 from typing import (

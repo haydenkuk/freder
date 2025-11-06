@@ -5,7 +5,7 @@ from typing import (
   List,
   Tuple,
 )
-from ..base import Fred
+from ..api import apicall
 from ..params import (
   CategoryId,
   RealtimeStart,
@@ -27,11 +27,13 @@ def get_category(
   category_id: str | int,
 ) -> dict:
   """
+  Get a category.
+  
   category_id: The id for a category.
       integer, default: 0 (root category)
   """
   param1 = CategoryId(category_id=category_id)
-  return Fred.request(
+  return apicall(
     endpoint='category',
     params={
       'category_id': param1,
@@ -41,10 +43,12 @@ def get_category(
 
 def get_category_children(
   category_id: str | int,
-  realtime_start: str | dt.datetime,
-  realtime_end: str | dt.datetime,
+  realtime_start: str | dt.datetime = '',
+  realtime_end: str | dt.datetime = '',
 ) -> dict:
   """
+  Get the child categories for a specified parent category.
+
   category_id:
     The id for a category.
       integer, default: 0 (root category)
@@ -59,7 +63,7 @@ def get_category_children(
   param1 = CategoryId(category_id)
   param2 = RealtimeStart(realtime_start)
   param3 = RealtimeEnd(realtime_end)
-  return Fred.request(
+  return apicall(
     endpoint='category/children',
     params={
       'category_id': param1,
@@ -75,6 +79,10 @@ def get_category_related(
   realtime_end: str | dt.datetime = '',
 ) -> dict:
   """
+  Get the related categories for a category.
+  A related category is a one-way relation between 2 categories that is not part of a parent-child category hierarchy.
+  Most categories do not have related categories.
+
   category_id
 
   The id for a category.
@@ -93,7 +101,7 @@ def get_category_related(
 
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='category/releated',
     params={
       'category_id': CategoryId(category_id),
@@ -117,6 +125,8 @@ def get_category_series(
   exclude_tag_names: str | List[str] | Tuple[str] = '',
 ) -> dict:
   """
+  Get the series in a category.
+
   category_id
   The id for a category.
       integer, required
@@ -167,7 +177,7 @@ def get_category_series(
       Example value: 'discontinued;annual'. Filter results to series having neither tag 'discontinued' nor tag 'annual'.
       Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series.
   """
-  return Fred.request(
+  return apicall(
     endpoint='category/series',
     params={
       'category_id': CategoryId(category_id),
@@ -198,6 +208,11 @@ def get_category_tags(
   sort_order: str = 'asc',
 ) -> dict:
   """
+  Get the FRED tags for a category.
+  Optionally, filter results by tag name, tag group, or search.
+  Series are assigned tags and categories. Indirectly through series, it is possible to get the tags for a category.
+  No tags exist for a category that does not have series.
+
   category_id
     The id for a category.
       integer, required
@@ -249,7 +264,7 @@ def get_category_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='category/tags',
     params={
       'category_id': CategoryId(category_id),
@@ -337,7 +352,7 @@ def get_category_related_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='category/related_tags',
     params={
       'category_id': CategoryId(category_id),

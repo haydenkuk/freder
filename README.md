@@ -17,7 +17,7 @@ Features
 
 1. Installation
 ```sh
-pip install fred
+pip install freder
 ```
 Requires Python 3.9+
 
@@ -26,6 +26,7 @@ Requires Python 3.9+
 1-1) Authentication: using dotenv
  - Created a file named ".env"
  - Add "FRED_APIKEY='YOURAPIKEY'" in the file
+
 1-2) Authentication: using "set_apikey"
 ```python
 import freder

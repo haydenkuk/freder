@@ -1,10 +1,5 @@
-"""FRED API Python package"""
-
-__version__ = '0.0.0'
-__author__ = 'Yunjong Guk'
-
-
-from .fredapi import (
+from .api import apicall
+from .endpoints import (
   get_category,
   get_category_children,
   get_category_related,
@@ -36,11 +31,10 @@ from .fredapi import (
   get_tags,
   get_related_tags,
   get_tags_series,
-  apicall,
 )
 
-
 __all__ = [
+  'apicall',
   'get_category',
   'get_category_children',
   'get_category_related',
@@ -71,6 +65,5 @@ __all__ = [
   'get_sources',
   'get_tags',
   'get_related_tags',
-  'get_tags_series',
-  'apicall',
+  'get_tags_series'
 ]

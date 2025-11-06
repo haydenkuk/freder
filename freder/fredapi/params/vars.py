@@ -5,14 +5,15 @@ BASEURL = 'https://api.stlouisfed.org/fred'
 DATE_FORMAT= '%Y-%m-%d'
 TIME_FORMAT = '%Y%m%d%H%M'
 DATE_REGEX = re.compile(r'^\d{4}\-\d{2}\-\d{2}$')
-APIKEY = ''
+APIKEY = None
 ORDER_BY_LIST = [
   'series_id', 'title', 'units',
   'frequency', 'seasonal_adjustment',
   'realtime_start', 'realtime_end',
   'last_updated', 'observation_start',
   'observation_end', 'popularity',
-  'group_popularity', 'series_count'
+  'group_popularity', 'series_count',
+  'release_id',
 ]
 SORT_ORDER_LIST = [
   'asc', 'desc'

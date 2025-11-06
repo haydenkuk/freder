@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-from ..base import Fred
+from ..api import apicall
 from typing import List, Tuple
 from ..params import (
   SeriesId,
@@ -50,7 +50,7 @@ def get_series(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='series',
     params={
       'series_id': SeriesId(series_id),
@@ -78,7 +78,7 @@ def get_series_categories(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/categories',
     params={
       'series_id': SeriesId(series_id),
@@ -221,7 +221,7 @@ def get_series_observations(
       any output_type or other series: 1000 csv, 1000 xlsx, 2000 json, 2000 xml
 
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/observations',
     params={
       'series_id': SeriesId(series_id),
@@ -259,7 +259,7 @@ def get_series_release(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/release',
     params={
       'series_id': SeriesId(series_id),
@@ -340,7 +340,7 @@ def get_series_search(
       Example value: 'discontinued;m1'. Filter results to series having neither tag 'discontinued' nor tag 'm1'.
       Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series.
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/search',
     params={
       'search_text': SearchText(search_text),
@@ -423,7 +423,7 @@ def get_series_search_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/search/tags',
     params={
       'series_search_text': SeriesSearchText(series_search_text),
@@ -510,7 +510,7 @@ def get_series_search_related_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/search/related_tags',
     params={
       'series_search_text': SeriesSearchText(series_search_text),
@@ -558,7 +558,7 @@ def get_series_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/tags',
     params={
       'series_id': SeriesId(series_id),
@@ -611,7 +611,7 @@ def get_series_updates(
       YYYYMMDDHhmm formatted string, optional, , start_time is required if end_time is set<
       Example: 2018-03-02 2:20 would be 201803020220
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/updates',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -658,7 +658,7 @@ def get_series_vintageupdates(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='series/vintageupdates',
     params={
       'series_id': SeriesId(series_id),

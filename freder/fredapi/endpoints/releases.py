@@ -1,7 +1,7 @@
 import datetime as dt
 
 
-from ..base import Fred
+from ..api import apicall
 from typing import (
   List,
   Tuple,
@@ -61,7 +61,7 @@ def get_releases(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='releases',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -116,7 +116,7 @@ def get_releases_dates(
       One of the following strings: 'true', 'false'.
       optional, default: false
   """
-  return Fred.request(
+  return apicall(
     endpoint='releases/dates',
     params={
       'realtime_start': RealtimeStart(realtime_start),
@@ -148,7 +148,7 @@ def get_release(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='release',
     params={
       'release_id': ReleaseId(release_id),
@@ -197,7 +197,7 @@ def get_release_dates(
       One of the following strings: 'true', 'false'.
       optional, default: false
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/dates',
     params={
       'release_id': ReleaseId(release_id),
@@ -275,7 +275,7 @@ def get_release_series(
       Example value: 'imports;services'. Filter results to series having neither tag 'imports' nor tag 'services'.
       Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series.
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/series',
     params={
       'release_id': ReleaseId(release_id),
@@ -311,7 +311,7 @@ def get_release_sources(
   The end of the real-time period. For more information, see Real-Time Periods.
       YYYY-MM-DD formatted string, optional, default: today's date
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/sources',
     params={
       'release_id': ReleaseId(release_id),
@@ -384,7 +384,7 @@ def get_release_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/tags',
     params={
       'release_id': ReleaseId(release_id),
@@ -471,7 +471,7 @@ def get_release_related_tags(
       One of the following strings: 'asc', 'desc'.
       optional, default: asc
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/related_tags',
     params={
       'release_id': ReleaseId(release_id),
@@ -514,7 +514,7 @@ def get_release_tables(
   The observation date to be included with the returned release table.
       YYYY-MM-DD formatted string, optional, default: 9999-12-31 (latest available)
   """
-  return Fred.request(
+  return apicall(
     endpoint='release/tables',
     params={
       'release_id': ReleaseId(release_id),
